@@ -5,18 +5,41 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "bluelock",
+            "name": "counter_sample",
+            "cwd": "counter_sample",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "bluelock (profile mode)",
+            "name": "counter_sample (profile mode)",
+            "cwd": "counter_sample",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "bluelock (release mode)",
+            "name": "counter_sample (release mode)",
+            "cwd": "counter_sample",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "list_sample",
+            "cwd": "list_sample",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "list_sample (profile mode)",
+            "cwd": "list_sample",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "list_sample (release mode)",
+            "cwd": "list_sample",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
