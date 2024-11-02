@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      restorationScopeId: 'app',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -30,13 +31,28 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _MyHomePageState extends State<MyHomePage> with RestorationMixin {
+  // State restoration for counter
+  final RestorableInt _counter = RestorableInt(0);
+
+  @override
+  String? get restorationId => 'my_home_page';
+
+  @override
+  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
+    registerForRestoration(_counter, 'counter');
+  }
 
   void _incrementCounter() {
     setState(() {
-      _counter++;
+      _counter.value++;
     });
+  }
+
+  @override
+  void dispose() {
+    _counter.dispose();
+    super.dispose();
   }
 
   @override
@@ -54,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$_counter',
+              '${_counter.value}',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
